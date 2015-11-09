@@ -10,16 +10,19 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.FXCollections;
 
 public class Controller {
+    //Variables
     public ListView lista;
     public ImageView imagen;
     public Text texto;
     public ObservableList row = FXCollections.observableArrayList();
     public Button boton;
 
+    //setGraphic per al botó d'actualitza
     public void initialize() {
         boton.setGraphic(new ImageView("refresh.png"));
     }
 
+    //mètode per actualitzar el listview amb les dades
     public void actualiza(ActionEvent actionEvent) {
         row.add("Leo");
         lista.setItems(row);
