@@ -28,6 +28,9 @@ public class Controller {
         lista.setItems(row);
         texto.setText(row.toString());
     }
+
+    //treball amb el forecast. hem triat JAXB per a l'extracció de dades
+
 }
 
 
