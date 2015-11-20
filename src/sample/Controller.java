@@ -32,14 +32,37 @@ public class Controller {
     public Text texto;
     public ObservableList row = FXCollections.observableArrayList();
     public Button boton;
-    //Variables de las imagenes.
-    public javafx.scene.image.Image clear = new javafx.scene.image.Image(getClass().getResource("\\images\\clear.png").toExternalForm());
-    public javafx.scene.image.Image few = new javafx.scene.image.Image(getClass().getResource("\\images\\few.png").toExternalForm());
-    public javafx.scene.image.Image scattered = new javafx.scene.image.Image(getClass().getResource("\\images\\scattered.png").toExternalForm());
+    public Text tempMaxRes;
+    public Text tempMinRes;
+
+
+    //Variables de les imatges
+    public Image clear = new Image ("http://openweathermap.org/img/w/01d.png");
+    public Image few = new Image ("http://openweathermap.org/img/w/02d.png");
+    public Image scattered = new Image ("http://openweathermap.org/img/w/03d.png");
 
     //setGraphic per al botó d'actualitza
     public void initialize() throws ParserConfigurationException, IOException, org.xml.sax.SAXException {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("El Temps - Leonardo Martinez");
+        alert.setHeaderText(null);
+        alert.setContentText("Benvingut a l'aplicacio El Temps\nCopyright 2015 - Leonardo Martinez");
+        alert.showAndWait();
+
         boton.setGraphic(new ImageView("refresh.png"));
+
+        dom();
+    }
+
+    /* mètode per actualitzar el listview amb les dades de l'xml. configurat per actualitzar-se amb json o per a que canviin els
+       valor en el moment d'utilitzar dades que canviïn constantment
+    */
+    public void actualiza(ActionEvent actionEvent) throws ParserConfigurationException, IOException, org.xml.sax.SAXException {
+        row.remove(0,16); //numero de filas
+        dom();
+    }
+
+    public void dom() throws ParserConfigurationException, IOException, org.xml.sax.SAXException {
         //DOM per a afegir les dades al llençar el programa
         File xmlFile = new File("src\\sample\\forecast\\forecast.xml");
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -65,26 +88,21 @@ public class Controller {
                         Node nNode = nList.item(lista.getSelectionModel().getSelectedIndex());
                         Element eElement = (Element) nNode;
                         texto.setText(eElement.getAttribute("day"));
+                        tempMaxRes.setText(eElement.getElementsByTagName("temperature").item(0).getAttributes().item(2).getTextContent());
+                        tempMinRes.setText(eElement.getElementsByTagName("temperature").item(0).getAttributes().item(3).getTextContent());
+
+
                         //aprofitem i canviem també la imatge.
-                        if(eElement.getElementsByTagName("clouds").item(0).getAttributes().item(2).getTextContent().equals("clear sky")){
+                        if(eElement.getElementsByTagName("symbol").item(0).getAttributes().item(1).getTextContent().equals("800")){
                             imagen.setImage(clear);
-                        }else if(eElement.getElementsByTagName("clouds").item(0).getAttributes().item(2).getTextContent().equals("scattered clouds")){
+                        }else if(eElement.getElementsByTagName("symbol").item(0).getAttributes().item(1).getTextContent().equals("802")){
                             imagen.setImage(scattered);
-                        }else if(eElement.getElementsByTagName("clouds").item(0).getAttributes().item(2).getTextContent().equals("few clouds")){
+                        }else if(eElement.getElementsByTagName("symbol").item(0).getAttributes().item(1).getTextContent().equals("801")){
                             imagen.setImage(few);
                         }
 
                     }
                 }
         );
-
-    }
-
-    /* mètode per actualitzar el listview amb les dades de l'xml. configurat per actualitzar-se amb json o per a que canviin els
-       valor en el moment d'utilitzar dades que canviïn constantment
-    */
-    public void actualiza(ActionEvent actionEvent) throws ParserConfigurationException, IOException, org.xml.sax.SAXException {
-        row.remove(0,16); //numero de filas
-        initialize();
     }
 }

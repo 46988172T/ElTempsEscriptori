@@ -12,14 +12,23 @@
 
 <!--FXML del disseny de l'aplicació (interfície) feta amb SceneBuilder-->
 
-<AnchorPane fx:id="panel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2E4172; -fx-border-color: #D4D26A;" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane fx:id="panel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="489.0" prefWidth="600.0" style="-fx-background-color: #2E4172; -fx-border-color: #D4D26A;" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <ListView fx:id="lista" layoutX="37.0" layoutY="30.0" prefHeight="341.0" prefWidth="230.0" />
-      <ImageView fx:id="imagen" fitHeight="150.0" fitWidth="200.0" layoutX="361.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
-      <Text fx:id="texto" fill="WHITE" layoutX="335.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="201.7294921875">
+      <ListView fx:id="lista" layoutX="28.0" layoutY="125.0" prefHeight="341.0" prefWidth="230.0" />
+      <ImageView fx:id="imagen" fitHeight="47.0" fitWidth="57.0" layoutX="394.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true" />
+      <Text fx:id="texto" fill="WHITE" layoutX="322.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="201.7294921875">
          <font>
             <Font name="DilleniaUPC" size="41.0" />
          </font></Text>
-      <Button fx:id="boton" layoutX="409.0" layoutY="300.0" mnemonicParsing="false" onAction="#actualiza" />
+      <Button fx:id="boton" layoutX="400.0" layoutY="349.0" mnemonicParsing="false" onAction="#actualiza" />
+      <Text fx:id="titol" fill="#e9eea2" layoutX="219.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EL TEMPS">
+         <font>
+            <Font name="Calibri" size="41.0" />
+         </font>
+      </Text>
+      <Text fx:id="tempMax" fill="WHITE" layoutX="333.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Temperatura max." />
+      <Text fx:id="tempMin" fill="WHITE" layoutX="333.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Temperatura min." />
+      <Text fx:id="tempMaxRes" fill="WHITE" layoutX="446.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="34.0" />
+      <Text fx:id="tempMinRes" fill="WHITE" layoutX="446.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="34.0" />
    </children>
 </AnchorPane>
