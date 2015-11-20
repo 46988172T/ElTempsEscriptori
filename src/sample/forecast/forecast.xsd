@@ -60,7 +60,7 @@
                           <xs:extension base="xs:string">
                             <xs:attribute type="xs:short" name="number" use="optional"/>
                             <xs:attribute type="xs:string" name="name" use="optional"/>
-                            <xs:attribute type="xs:float" name="var" use="optional"/>
+                            <xs:attribute type="xs:string" name="var" use="optional"/>
                           </xs:extension>
                         </xs:simpleContent>
                       </xs:complexType>
@@ -69,7 +69,7 @@
                       <xs:complexType>
                         <xs:simpleContent>
                           <xs:extension base="xs:string">
-                            <xs:attribute type="xs:float" name="value" use="optional"/>
+                            <xs:attribute type="xs:float" name="valuePr" use="optional"/>
                             <xs:attribute type="xs:string" name="type" use="optional"/>
                           </xs:extension>
                         </xs:simpleContent>
@@ -115,7 +115,7 @@
                         <xs:simpleContent>
                           <xs:extension base="xs:string">
                             <xs:attribute type="xs:string" name="unit" use="optional"/>
-                            <xs:attribute type="xs:float" name="value" use="optional"/>
+                            <xs:attribute type="xs:float" name="valueP" use="optional"/>
                           </xs:extension>
                         </xs:simpleContent>
                       </xs:complexType>
@@ -124,7 +124,7 @@
                       <xs:complexType>
                         <xs:simpleContent>
                           <xs:extension base="xs:string">
-                            <xs:attribute type="xs:byte" name="value" use="optional"/>
+                            <xs:attribute type="xs:byte" name="valueH" use="optional"/>
                             <xs:attribute type="xs:string" name="unit" use="optional"/>
                           </xs:extension>
                         </xs:simpleContent>
@@ -134,7 +134,7 @@
                       <xs:complexType>
                         <xs:simpleContent>
                           <xs:extension base="xs:string">
-                            <xs:attribute type="xs:string" name="value" use="optional"/>
+                            <xs:attribute type="xs:string" name="valueC" use="optional"/>
                             <xs:attribute type="xs:byte" name="all" use="optional"/>
                             <xs:attribute type="xs:string" name="unit" use="optional"/>
                           </xs:extension>
