@@ -32,7 +32,7 @@ public class Controller {
     public Text texto;
     public ObservableList row = FXCollections.observableArrayList();
     public Button boton;
-
+    //Variables de las imagenes.
     public javafx.scene.image.Image clear = new javafx.scene.image.Image(getClass().getResource("\\images\\clear.png").toExternalForm());
     public javafx.scene.image.Image few = new javafx.scene.image.Image(getClass().getResource("\\images\\few.png").toExternalForm());
     public javafx.scene.image.Image scattered = new javafx.scene.image.Image(getClass().getResource("\\images\\scattered.png").toExternalForm());
@@ -65,6 +65,7 @@ public class Controller {
                         Node nNode = nList.item(lista.getSelectionModel().getSelectedIndex());
                         Element eElement = (Element) nNode;
                         texto.setText(eElement.getAttribute("day"));
+                        //aprofitem i canviem també la imatge.
                         if(eElement.getElementsByTagName("clouds").item(0).getAttributes().item(2).getTextContent().equals("clear sky")){
                             imagen.setImage(clear);
                         }else if(eElement.getElementsByTagName("clouds").item(0).getAttributes().item(2).getTextContent().equals("scattered clouds")){

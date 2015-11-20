@@ -15,10 +15,7 @@
 <AnchorPane fx:id="panel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2E4172; -fx-border-color: #D4D26A;" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <ListView fx:id="lista" layoutX="37.0" layoutY="30.0" prefHeight="341.0" prefWidth="230.0" />
-      <ImageView fx:id="imagen" fitHeight="150.0" fitWidth="200.0" layoutX="361.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/clear.png" />
-         </image></ImageView>
+      <ImageView fx:id="imagen" fitHeight="150.0" fitWidth="200.0" layoutX="361.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
       <Text fx:id="texto" fill="WHITE" layoutX="335.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="201.7294921875">
          <font>
             <Font name="DilleniaUPC" size="41.0" />
