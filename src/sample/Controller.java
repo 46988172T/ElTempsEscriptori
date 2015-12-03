@@ -31,7 +31,6 @@ public class Controller {
     public ImageView imagen;
     public Text texto;
     public ObservableList row = FXCollections.observableArrayList();
-    public Button boton;
     public Text tempMaxRes;
     public Text tempMinRes;
 
@@ -41,7 +40,7 @@ public class Controller {
     public Image few = new Image ("http://openweathermap.org/img/w/02d.png");
     public Image scattered = new Image ("http://openweathermap.org/img/w/03d.png");
 
-    //setGraphic per al botó d'actualitza
+    //setGraphic per al botï¿½ d'actualitza
     public void initialize() throws ParserConfigurationException, IOException, org.xml.sax.SAXException {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("El Temps - Leonardo Martinez");
@@ -49,13 +48,11 @@ public class Controller {
         alert.setContentText("Benvingut a l'aplicacio El Temps\nCopyright 2015 - Leonardo Martinez");
         alert.showAndWait();
 
-        boton.setGraphic(new ImageView("refresh.png"));
-
         dom();
     }
 
-    /* mètode per actualitzar el listview amb les dades de l'xml. configurat per actualitzar-se amb json o per a que canviin els
-       valor en el moment d'utilitzar dades que canviïn constantment
+    /* mï¿½tode per actualitzar el listview amb les dades de l'xml. configurat per actualitzar-se amb json o per a que canviin els
+       valor en el moment d'utilitzar dades que canviï¿½n constantment
     */
     public void actualiza(ActionEvent actionEvent) throws ParserConfigurationException, IOException, org.xml.sax.SAXException {
         row.remove(0,16); //numero de filas
@@ -63,8 +60,8 @@ public class Controller {
     }
 
     public void dom() throws ParserConfigurationException, IOException, org.xml.sax.SAXException {
-        //DOM per a afegir les dades al llençar el programa
-        File xmlFile = new File("src\\sample\\forecast\\forecast.xml");
+        //DOM per a afegir les dades al llenï¿½ar el programa
+        File xmlFile = new File("src/sample/forecast/forecast.xml");
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document doc = dBuilder.parse(xmlFile);
@@ -76,7 +73,7 @@ public class Controller {
             if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                 Element eElement = (Element) nNode;
                 row.add(eElement.getAttribute("day")+" || "+
-                        eElement.getElementsByTagName("clouds").item(0).getAttributes().item(2).getTextContent());
+                        eElement.getElementsByTagName("symbol").item(0).getAttributes().item(0).getTextContent());
                 lista.setItems(row);
             }
         }
@@ -92,7 +89,7 @@ public class Controller {
                         tempMinRes.setText(eElement.getElementsByTagName("temperature").item(0).getAttributes().item(3).getTextContent());
 
 
-                        //aprofitem i canviem també la imatge.
+                        //aprofitem i canviem tambï¿½ la imatge.
                         if(eElement.getElementsByTagName("symbol").item(0).getAttributes().item(1).getTextContent().equals("800")){
                             imagen.setImage(clear);
                         }else if(eElement.getElementsByTagName("symbol").item(0).getAttributes().item(1).getTextContent().equals("802")){
