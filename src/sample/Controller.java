@@ -4,14 +4,20 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.collections.ObservableList;
 import javafx.collections.ListChangeListener;
 import javafx.collections.FXCollections;
+import javafx.stage.Stage;
 import jdk.internal.org.xml.sax.SAXException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -33,12 +39,15 @@ public class Controller {
     public ObservableList row = FXCollections.observableArrayList();
     public Text tempMaxRes;
     public Text tempMinRes;
+    public Text tempMax;
+    public Text tempMin;
+    public Button tornar;
 
 
     //Variables de les imatges
     public Image clear = new Image ("http://openweathermap.org/img/w/01d.png");
     public Image few = new Image ("http://openweathermap.org/img/w/02d.png");
-    public Image scattered = new Image ("http://openweathermap.org/img/w/03d.png");
+    public Image rain = new Image ("http://openweathermap.org/img/w/10d.png");
 
     //setGraphic per al bot� d'actualitza
     public void initialize() throws ParserConfigurationException, IOException, org.xml.sax.SAXException {
@@ -90,16 +99,45 @@ public class Controller {
 
 
                         //aprofitem i canviem tamb� la imatge.
-                        if(eElement.getElementsByTagName("symbol").item(0).getAttributes().item(1).getTextContent().equals("800")){
-                            imagen.setImage(clear);
-                        }else if(eElement.getElementsByTagName("symbol").item(0).getAttributes().item(1).getTextContent().equals("802")){
-                            imagen.setImage(scattered);
-                        }else if(eElement.getElementsByTagName("symbol").item(0).getAttributes().item(1).getTextContent().equals("801")){
+                        if(eElement.getElementsByTagName("symbol").item(0).getAttributes().item(0).getTextContent().equals("few clouds")){
                             imagen.setImage(few);
+                        }else if(eElement.getElementsByTagName("symbol").item(0).getAttributes().item(0).getTextContent().equals("light rain")){
+                            imagen.setImage(rain);
+                        }else if(eElement.getElementsByTagName("symbol").item(0).getAttributes().item(0).getTextContent().equals("sky is clear")){
+                            imagen.setImage(clear);
                         }
 
                     }
                 }
         );
+
+        lista.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
+                    if (mouseEvent.getClickCount() == 2) {
+                        lista.visibleProperty().setValue(false);
+                        texto.visibleProperty().setValue(true);
+                        imagen.visibleProperty().setValue(true);
+                        tempMaxRes.visibleProperty().setValue(true);
+                        tempMinRes.visibleProperty().setValue(true);
+                        tempMax.visibleProperty().setValue(true);
+                        tempMin.visibleProperty().setValue(true);
+                        tornar.visibleProperty().setValue(true);
+                    }
+                }
+            }
+        });
+    }
+
+    public void tornar(ActionEvent actionEvent) {
+        lista.visibleProperty().setValue(true);
+        texto.visibleProperty().setValue(false);
+        imagen.visibleProperty().setValue(false);
+        tempMaxRes.visibleProperty().setValue(false);
+        tempMinRes.visibleProperty().setValue(false);
+        tempMax.visibleProperty().setValue(false);
+        tempMin.visibleProperty().setValue(false);
+        tornar.visibleProperty().setValue(false);
     }
 }
